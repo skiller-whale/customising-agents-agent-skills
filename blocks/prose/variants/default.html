@@ -1,0 +1,8 @@
+{% from "container/macros.html" import container %}
+<section class="prose" id="{{ options.id }}">
+  {% call container("narrow") %}
+  {{ content.heading_html }}
+  {{ content.body_html }}
+  {% endcall %}
+</section>
+

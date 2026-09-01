@@ -1,0 +1,13 @@
+.container {
+  width: min(100% - 2.5rem, 70rem);
+  margin-inline: auto;
+}
+
+.container--narrow {
+  width: min(100% - 2.5rem, 48rem);
+}
+
+.container--wide {
+  width: min(100% - 2.5rem, 82rem);
+}
+

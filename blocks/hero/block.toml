@@ -1,0 +1,6 @@
+name = "hero"
+renderable = true
+default_variant = "centered"
+variants = ["centered", "split"]
+requires = ["container", "button"]
+

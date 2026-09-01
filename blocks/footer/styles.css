@@ -1,0 +1,11 @@
+.footer {
+  padding-block: 2rem;
+  color: #c7ccda;
+  background: #0d1424;
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin: 0;
+}
+

@@ -1,0 +1,13 @@
+{% from "container/macros.html" import container %}
+{% from "button/macros.html" import action_list %}
+<section class="cta cta--banner" id="{{ options.id }}">
+  {% call container("wide") %}
+  <div class="cta__banner">
+    <div>
+      {{ content.heading_html }}
+      {{ content.body_html }}
+    </div>
+    {{ action_list(content.actions) }}
+  </div>
+  {% endcall %}
+</section>

@@ -1,0 +1,11 @@
+{% from "container/macros.html" import container %}
+{% from "button/macros.html" import action_list %}
+<section class="hero hero--centered" id="{{ options.id }}">
+  {% call container("narrow") %}
+  {% if content.image %}<img class="hero__portrait" src="{{ content.image.src }}" alt="{{ content.image.alt }}">{% endif %}
+  {{ content.heading_html }}
+  <div class="hero__copy">{{ content.body_html }}</div>
+  {{ action_list(content.actions) }}
+  {% endcall %}
+</section>
+

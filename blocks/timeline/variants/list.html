@@ -1,0 +1,13 @@
+{% from "container/macros.html" import container %}
+<section class="timeline-block timeline-block--list" id="{{ options.id }}">
+  {% call container("normal") %}
+  {{ content.heading_html }}
+  {{ content.body_html }}
+  {% for item in content.items %}
+  <article class="timeline-block__item">
+    {{ item.title_html }}
+    {{ item.body_html }}
+  </article>
+  {% endfor %}
+  {% endcall %}
+</section>

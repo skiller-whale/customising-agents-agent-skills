@@ -1,0 +1,32 @@
+.timeline-block {
+  background: var(--surface);
+}
+
+.timeline {
+  position: relative;
+  margin-top: 3rem;
+  padding-left: 2rem;
+  border-left: 2px solid var(--line);
+}
+
+.timeline__item {
+  position: relative;
+  padding: 0 0 2rem 1.25rem;
+}
+
+.timeline__item::before {
+  position: absolute;
+  top: 0.35rem;
+  left: -2.45rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 3px solid var(--surface);
+  border-radius: 50%;
+  background: var(--accent);
+  content: "";
+}
+
+.timeline-block__item {
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--line);
+}

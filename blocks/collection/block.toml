@@ -1,0 +1,10 @@
+name = "collection"
+renderable = true
+default_variant = "cards"
+variants = ["cards", "list"]
+requires = ["container", "card"]
+
+[options.columns]
+type = "integer"
+default = 3
+choices = [2, 3, 4]

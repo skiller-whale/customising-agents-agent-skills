@@ -1,0 +1,5 @@
+name = "cta"
+renderable = true
+default_variant = "simple"
+variants = ["simple", "banner"]
+requires = ["container", "button"]

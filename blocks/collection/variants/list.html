@@ -1,0 +1,15 @@
+{% from "container/macros.html" import container %}
+<section class="collection" id="{{ options.id }}">
+  {% call container("normal") %}
+  {{ content.heading_html }}
+  <div class="collection__intro">{{ content.body_html }}</div>
+  <div class="collection__list">
+    {% for item in content.items %}
+    <article class="collection__list-item">
+      {{ item.title_html }}
+      {{ item.body_html }}
+    </article>
+    {% endfor %}
+  </div>
+  {% endcall %}
+</section>

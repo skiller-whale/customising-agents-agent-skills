@@ -1,0 +1,10 @@
+{% macro action_list(actions) -%}
+{% if actions %}
+<nav class="actions" aria-label="Related links">
+  {% for action in actions %}
+  <a class="button {{ 'button--primary' if loop.first else 'button--secondary' }}" href="{{ action.href }}"{% if action.title %} title="{{ action.title }}"{% endif %}>{{ action.label }}</a>
+  {% endfor %}
+</nav>
+{% endif %}
+{%- endmacro %}
+

@@ -1,0 +1,10 @@
+{% macro card(item) -%}
+<article class="card">
+  {% if item.image %}<img class="card__image" src="{{ item.image.src }}" alt="{{ item.image.alt }}">{% endif %}
+  <div class="card__content">
+    {{ item.title_html }}
+    {{ item.body_html }}
+  </div>
+</article>
+{%- endmacro %}
+

@@ -1,0 +1,6 @@
+name = "footer"
+renderable = true
+default_variant = "minimal"
+variants = ["minimal"]
+requires = ["container"]
+

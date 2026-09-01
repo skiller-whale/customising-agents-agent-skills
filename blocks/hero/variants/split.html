@@ -1,0 +1,15 @@
+{% from "container/macros.html" import container %}
+{% from "button/macros.html" import action_list %}
+<section class="hero hero--split" id="{{ options.id }}">
+  {% call container("wide") %}
+  <div class="hero__grid">
+    <div class="hero__content">
+      {{ content.heading_html }}
+      <div class="hero__copy">{{ content.body_html }}</div>
+      {{ action_list(content.actions) }}
+    </div>
+    {% if content.image %}<img class="hero__image" src="{{ content.image.src }}" alt="{{ content.image.alt }}">{% endif %}
+  </div>
+  {% endcall %}
+</section>
+

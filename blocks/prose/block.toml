@@ -1,0 +1,6 @@
+name = "prose"
+renderable = true
+default_variant = "default"
+variants = ["default"]
+requires = ["container"]
+

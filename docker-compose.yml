@@ -1,0 +1,29 @@
+services:
+  sync:
+    image: "ghcr.io/skiller-whale/learnersync:0.2.8"
+    network_mode: "host"
+    environment:
+      SERVER_URL: https://train.skillerwhale.com
+      SW_RUNNING_IN_HOSTED_ENV:
+      WATCHER_BASE_PATH: "/app"
+      ATTENDANCE_ID_FILE: "/app/sync/attendance_id"
+      WATCHED_EXTS: ".py .yaml .json .css .html .md .chat"
+      IGNORE_MATCH: ".git node_modules"
+    volumes:
+      - .:/app/code
+      - ./.chat_history:/app/chat_history
+      - ./attendance_id:/app/sync/attendance_id
+    tty: true
+    stdin_open: true
+  claude_session_sync_filter:
+    image: "ghcr.io/skiller-whale/claude-session-sync-filter:0.0.2"
+    volumes:
+      - /home/learner/.claude/projects:/sessions_raw:ro
+      - ./.chat_history:/sessions_filtered
+  site:
+    image: "busybox:1.38.0-uclibc"
+    command: ["httpd", "-f", "-p", "0.0.0.0:1002", "-h", "/site"]
+    ports:
+      - "0.0.0.0:1002:1002"
+    volumes:
+      - ./dist:/site:ro

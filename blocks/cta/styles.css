@@ -1,0 +1,35 @@
+.cta {
+  color: white;
+  background: var(--ink);
+}
+
+.cta a:not(.button) {
+  color: white;
+}
+
+.cta .button--secondary {
+  border-color: white;
+  color: white;
+}
+
+.cta__banner {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cta__banner .actions {
+  flex: 0 0 auto;
+  margin-top: 0;
+}
+
+@media (max-width: 42rem) {
+  .cta__banner {
+    display: block;
+  }
+
+  .cta__banner .actions {
+    margin-top: 1.75rem;
+  }
+}

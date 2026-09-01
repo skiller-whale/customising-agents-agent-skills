@@ -1,0 +1,5 @@
+Jinja2>=3.1,<4
+markdown-it-py>=4,<5
+PyYAML>=6,<7
+pytest>=8,<10
+

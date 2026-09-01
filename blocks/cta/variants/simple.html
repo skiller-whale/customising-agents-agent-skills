@@ -1,0 +1,9 @@
+{% from "container/macros.html" import container %}
+{% from "button/macros.html" import action_list %}
+<section class="cta cta--simple" id="{{ options.id }}">
+  {% call container("narrow") %}
+  {{ content.heading_html }}
+  {{ content.body_html }}
+  {{ action_list(content.actions) }}
+  {% endcall %}
+</section>

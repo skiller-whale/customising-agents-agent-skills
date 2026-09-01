@@ -1,0 +1,6 @@
+{% macro container(width="normal") -%}
+<div class="container container--{{ width }}">
+  {{ caller() }}
+</div>
+{%- endmacro %}
+

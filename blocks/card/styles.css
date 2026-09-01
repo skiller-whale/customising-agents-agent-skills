@@ -1,0 +1,22 @@
+.card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: 0 8px 25px rgb(23 32 51 / 7%);
+}
+
+.card__content {
+  padding: 1.5rem;
+}
+
+.card__content > :last-child {
+  margin-bottom: 0;
+}
+
+.card__image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+

@@ -1,0 +1,11 @@
+{% from "container/macros.html" import container %}
+{% from "card/macros.html" import card %}
+<section class="collection" id="{{ options.id }}">
+  {% call container("wide") %}
+  {{ content.heading_html }}
+  <div class="collection__intro">{{ content.body_html }}</div>
+  <div class="collection__grid collection__grid--{{ options.columns }}">
+    {% for item in content.items %}{{ card(item) }}{% endfor %}
+  </div>
+  {% endcall %}
+</section>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 900" role="img" aria-labelledby="title description">
+  <title id="title">Abstract portrait of Jo Rivera</title>
+  <desc id="description">A geometric portrait in coral, navy and cream.</desc>
+  <rect width="720" height="900" fill="#ede7d8"/>
+  <circle cx="550" cy="160" r="190" fill="#d9485f" opacity=".9"/>
+  <path d="M80 820C110 560 230 430 365 430c146 0 258 132 286 390z" fill="#172033"/>
+  <ellipse cx="360" cy="345" rx="170" ry="205" fill="#cf8b69"/>
+  <path d="M184 320c6-175 88-256 190-256 126 0 197 98 177 286-43-82-111-120-205-115-58 3-112 31-162 85z" fill="#172033"/>
+  <path d="M272 360c28 20 55 20 82 0M408 360c27 20 54 20 81 0" fill="none" stroke="#172033" stroke-linecap="round" stroke-width="12"/>
+  <path d="M332 456c25 26 66 26 93 0" fill="none" stroke="#8c3e37" stroke-linecap="round" stroke-width="12"/>
+  <path d="M278 560l85 70 84-70 47 260H233z" fill="#f7f4ec"/>
+</svg>
+
