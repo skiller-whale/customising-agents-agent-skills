@@ -51,6 +51,7 @@ check_triggered() {
   local output
 
   if ! output=$("$CLAUDE_COMMAND" -p "$query" \
+    --model haiku \
     --output-format stream-json \
     --verbose \
     --disallowedTools "Bash,Edit,Write,NotebookEdit" \
@@ -73,20 +74,52 @@ check_triggered() {
 query_count=$(jq -r --arg query_set "$QUERY_SET" '.[$query_set] | length' "$QUERIES_FILE")
 failures=0
 
+# Create temp directory for parallel results
+temp_dir=$(mktemp -d)
+trap 'rm -rf "$temp_dir"' EXIT
+
+total_checks=$((query_count * EVAL_RUNS))
+echo "Running $query_count queries × $EVAL_RUNS run(s) = $total_checks checks in parallel..."
+
+# Launch all checks in parallel
+for ((index = 0; index < query_count; index++)); do
+  query=$(jq -r --arg query_set "$QUERY_SET" --argjson index "$index" '.[$query_set][$index].query' "$QUERIES_FILE")
+
+  for ((run = 1; run <= EVAL_RUNS; run++)); do
+    (
+      if check_triggered "$query"; then
+        echo 1 > "$temp_dir/${index}_${run}"
+      else
+        status=$?
+        if (( status == 2 )); then
+          echo "ERROR" > "$temp_dir/${index}_${run}"
+        else
+          echo 0 > "$temp_dir/${index}_${run}"
+        fi
+      fi
+    ) &
+  done
+done
+
+# Wait for all background jobs
+echo "Waiting for checks to complete..."
+wait
+echo "All checks complete. Processing results..."
+echo
+
+# Process results
 for ((index = 0; index < query_count; index++)); do
   query=$(jq -r --arg query_set "$QUERY_SET" --argjson index "$index" '.[$query_set][$index].query' "$QUERIES_FILE")
   should_trigger=$(jq -r --arg query_set "$QUERY_SET" --argjson index "$index" '.[$query_set][$index].should_trigger' "$QUERIES_FILE")
   triggers=0
 
   for ((run = 1; run <= EVAL_RUNS; run++)); do
-    if check_triggered "$query"; then
-      triggers=$((triggers + 1))
-    else
-      status=$?
-      if (( status == 2 )); then
-        exit 2
-      fi
+    result=$(cat "$temp_dir/${index}_${run}")
+    if [[ "$result" == "ERROR" ]]; then
+      echo "error: Claude Code failed while evaluating: $query" >&2
+      exit 2
     fi
+    triggers=$((triggers + result))
   done
 
   passed=false
