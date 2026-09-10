@@ -1,0 +1,46 @@
+{
+  "train": [
+    {
+      "query": "Roll a d20 for my character's attack.",
+      "should_trigger": true
+    },
+    {
+      "query": "Roll two six-sided dice and give me the total.",
+      "should_trigger": true
+    },
+    {
+      "query": "Explain the probability of rolling doubles with two dice.",
+      "should_trigger": false
+    },
+    {
+      "query": "Choose a random number between 1 and 100.",
+      "should_trigger": false
+    }
+  ],
+  "validation": [
+    {
+      "query": "Roll a d8 to determine how much damage I deal.",
+      "should_trigger": true
+    },
+    {
+      "query": "Roll four d6s for a character's ability score.",
+      "should_trigger": true
+    },
+    {
+      "query": "Give me a random d12 result.",
+      "should_trigger": true
+    },
+    {
+      "query": "What is the expected value of a d20 roll?",
+      "should_trigger": false
+    },
+    {
+      "query": "Write the rules for a simple dice game.",
+      "should_trigger": false
+    },
+    {
+      "query": "Generate a random UUID.",
+      "should_trigger": false
+    }
+  ]
+}
